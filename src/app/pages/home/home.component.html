@@ -1,0 +1,200 @@
+<div class="page-shell">
+  <main>
+    <section class="hero-section">
+      <div class="hero-copy">
+        <p class="eyebrow">Modern e-commerce for modern shoppers</p>
+        <h1>Shop Smarter. Save More.</h1>
+        <p class="hero-text">
+          Discover premium products, enjoy seamless checkout, and experience fast delivery with ShopSmart.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" routerLink="/products">Shop Now</a>
+          <a class="btn btn-secondary" routerLink="/products">Explore Products</a>
+        </div>
+        <div class="hero-stats">
+          <div>
+            <strong>50k+</strong>
+            <span>Happy customers</span>
+          </div>
+          <div>
+            <strong>24/7</strong>
+            <span>Support</span>
+          </div>
+          <div>
+            <strong>4.9/5</strong>
+            <span>Rated</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <div class="orb orb-one"></div>
+        <div class="orb orb-two"></div>
+        <div class="card-stack">
+          <div class="visual-card large-card">
+            <div class="visual-icon">📦</div>
+            <h3>Fast Shipping</h3>
+            <p>Same-day dispatch on popular picks.</p>
+          </div>
+          <div class="visual-card small-card">
+            <div class="visual-icon">💳</div>
+            <h3>Secure Checkout</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block" id="categories">
+      <div class="section-heading">
+        <p class="eyebrow">Featured categories</p>
+        <h2>Browse by category</h2>
+      </div>
+      <div class="cards-grid categories-grid">
+        <article class="info-card category-card">
+          <div class="icon-wrap">📱</div>
+          <h3>Electronics</h3>
+          <p>Smart devices, accessories, and cutting-edge tech.</p>
+        </article>
+        <article class="info-card category-card">
+          <div class="icon-wrap">👗</div>
+          <h3>Fashion</h3>
+          <p>Trendy essentials for work, travel, and weekends.</p>
+        </article>
+        <article class="info-card category-card">
+          <div class="icon-wrap">🏠</div>
+          <h3>Home & Living</h3>
+          <p>Elevate your everyday space with thoughtful pieces.</p>
+        </article>
+        <article class="info-card category-card">
+          <div class="icon-wrap">📚</div>
+          <h3>Books</h3>
+          <p>Stories, guides, and inspiration for every curiosity.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-block" id="products-preview">
+      <div class="section-heading">
+        <p class="eyebrow">Featured products</p>
+        <h2>Popular picks this week</h2>
+      </div>
+      <div class="cards-grid product-grid">
+        <article class="product-card" *ngFor="let product of featuredProducts">
+          <div class="product-image">🧥</div>
+          <div class="product-body">
+            <p class="product-category">{{ product.category }}</p>
+            <h3>{{ product.name }}</h3>
+            <div class="rating">★★★★★</div>
+            <div class="product-footer">
+              <span class="price">{{ product.price | currency }}</span>
+            </div>
+          </div>
+        </article>
+      </div>
+      <div class="section-actions">
+        <a class="btn btn-primary" routerLink="/products">View All Products</a>
+      </div>
+    </section>
+
+    <section class="section-block" id="about">
+      <div class="section-heading">
+        <p class="eyebrow">Why choose us</p>
+        <h2>Built for a better shopping experience</h2>
+      </div>
+      <div class="cards-grid features-grid">
+        <article class="info-card feature-card">
+          <div class="icon-wrap">⚡</div>
+          <h3>Fast Delivery</h3>
+          <p>Fast dispatch and reliable shipping for every order.</p>
+        </article>
+        <article class="info-card feature-card">
+          <div class="icon-wrap">🔒</div>
+          <h3>Secure Payments</h3>
+          <p>Protected payments using industry-leading standards.</p>
+        </article>
+        <article class="info-card feature-card">
+          <div class="icon-wrap">✨</div>
+          <h3>Quality Products</h3>
+          <p>Carefully selected products that feel premium and lasting.</p>
+        </article>
+        <article class="info-card feature-card">
+          <div class="icon-wrap">💬</div>
+          <h3>24/7 Support</h3>
+          <p>Friendly support whenever you need a helping hand.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-block testimonials-section">
+      <div class="section-heading">
+        <p class="eyebrow">Testimonials</p>
+        <h2>What customers are saying</h2>
+      </div>
+      <div class="cards-grid testimonial-grid">
+        <article class="testimonial-card">
+          <div class="avatar">AL</div>
+          <h3>Alicia Lewis</h3>
+          <div class="rating">★★★★★</div>
+          <p>“The experience feels premium from start to finish. Delivery was super fast.”</p>
+        </article>
+        <article class="testimonial-card">
+          <div class="avatar">MJ</div>
+          <h3>Marcus James</h3>
+          <div class="rating">★★★★★</div>
+          <p>“Great quality and a beautifully designed store. I shop here every week.”</p>
+        </article>
+        <article class="testimonial-card">
+          <div class="avatar">SK</div>
+          <h3>Sophia Kim</h3>
+          <div class="rating">★★★★★</div>
+          <p>“Everything is easy to find, pretty to explore, and the support team is amazing.”</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="newsletter-section" id="contact">
+      <div>
+        <p class="eyebrow">Join the list</p>
+        <h2>Get exclusive offers and updates</h2>
+        <p>Subscribe for fresh arrivals, special discounts, and helpful shopping tips.</p>
+      </div>
+      <form class="newsletter-form" (ngSubmit)="subscribe()">
+        <input type="email" [(ngModel)]="email" name="email" placeholder="Enter your email" required />
+        <button type="submit">Subscribe</button>
+      </form>
+      <p class="success-message" *ngIf="subscribed">Thanks for subscribing! 🎉</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-column">
+      <a class="brand footer-brand" routerLink="/">
+        <span class="brand-mark">S</span>
+        <span>ShopSmart</span>
+      </a>
+      <p>Curated products, effortless browsing, and a modern shopping experience for everyone.</p>
+    </div>
+    <div class="footer-column">
+      <h4>Explore</h4>
+      <a routerLink="/">Home</a>
+      <a routerLink="/products">Products</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-column">
+      <h4>Helpful links</h4>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">FAQ</a>
+    </div>
+    <div class="footer-column">
+      <h4>Follow us</h4>
+      <div class="social-links">
+        <a href="#">Facebook</a>
+        <a href="#">Instagram</a>
+        <a href="#">Twitter</a>
+        <a href="#">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+</div>

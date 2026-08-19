@@ -1,3 +1,285 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import 'tailwindcss';
+
+:root {
+	--app-bg: #0b0b0f;
+	--app-bg-soft: #11131a;
+	--surface: #16181d;
+	--surface-2: #1b1d23;
+	--surface-3: #20232b;
+	--border: #2a2d34;
+	--text: #f8fafc;
+	--text-muted: #9ca3af;
+	--accent: #3b82f6;
+	--accent-strong: #2563eb;
+	--success: #22c55e;
+	--danger: #ef4444;
+	--shadow-soft: 0 16px 40px rgba(0, 0, 0, 0.35);
+	--shadow-lift: 0 24px 60px rgba(0, 0, 0, 0.48);
+	--radius-lg: 20px;
+	--radius-xl: 24px;
+}
+
+html,
+body {
+	min-height: 100%;
+	margin: 0;
+	background:
+		radial-gradient(circle at top left, rgba(59, 130, 246, 0.16), transparent 24%),
+		radial-gradient(circle at top right, rgba(59, 130, 246, 0.08), transparent 26%),
+		linear-gradient(180deg, #0b0b0f 0%, #0d0f14 45%, #09090c 100%);
+	color: var(--text);
+	font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+}
+
+body {
+	overflow-x: hidden;
+}
+
+body::before {
+	content: '';
+	position: fixed;
+	inset: 0;
+	pointer-events: none;
+	background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 25%);
+	opacity: 0.55;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+a {
+	color: inherit;
+}
+
+button,
+input,
+select,
+textarea {
+	font: inherit;
+}
+
+main {
+	display: block;
+	padding: 1rem 1rem 3rem;
+	animation: pageFadeIn 0.35s ease both;
+}
+
+section,
+.page-shell,
+.hero-section,
+.newsletter-section,
+.hero-card,
+.stat-card,
+.profile-card,
+.cart-card,
+.dashboard-card,
+.counter-card,
+.settings-shell,
+.country-search-card,
+.movie-search-card,
+.search-card,
+.registration-card,
+.login-card,
+.inventory-item,
+.inventory-shell .card,
+.product-detail-page .product-info,
+.product-grid .product-card,
+.info-card,
+.testimonial-card,
+.visual-card,
+.preview-item,
+.related-card,
+.cart-item,
+.movie-item,
+.country-card,
+.p-card {
+	background: var(--surface) !important;
+	color: var(--text) !important;
+	border-color: var(--border) !important;
+	box-shadow: var(--shadow-soft) !important;
+}
+
+.hero-section {
+	background: linear-gradient(135deg, rgba(17, 19, 26, 0.96), rgba(11, 11, 15, 0.98)) !important;
+	border: 1px solid var(--border) !important;
+}
+
+.hero-visual,
+.newsletter-section {
+	background: linear-gradient(135deg, rgba(22, 24, 29, 0.95), rgba(11, 11, 15, 0.98)) !important;
+}
+
+.hero-visual {
+	border: 1px solid rgba(59, 130, 246, 0.3) !important;
+}
+
+.hero-stats div,
+.icon-wrap,
+.avatar,
+.brand-mark {
+	background: linear-gradient(135deg, rgba(37, 99, 235, 0.9), rgba(96, 165, 250, 0.9)) !important;
+	color: white !important;
+}
+
+.hero-copy h1,
+.section-heading h2,
+.cart-card h2,
+.profile-card h1,
+.profile-card h2,
+.dashboard-shell h1,
+.dashboard-shell h3,
+.settings-shell h1,
+.search-card h2,
+.country-search-card h2,
+.movie-search-card h2,
+.counter-card h2,
+.registration-card h2,
+.login-card h2,
+.inventory-shell h3,
+.product-detail-page h1,
+.footer-column h4,
+.product-card h3,
+.testimonial-card h3,
+.info-card h3,
+.preview h3 {
+	color: var(--text) !important;
+}
+
+.hero-text,
+.hero-stats span,
+.section-heading p,
+.subtitle,
+.summary p,
+.product-category,
+.footer-column a,
+.footer-column p,
+.status,
+.empty-state,
+.error-message,
+.helper,
+.field-error,
+.preview-item strong,
+.preview-item p,
+.country-card p,
+.movie-item p,
+.cart-item p,
+.cart-card p,
+.profile-grid p,
+.stat-card h3,
+.inventory-item p,
+.product-info .description {
+	color: var(--text-muted) !important;
+}
+
+input,
+select,
+textarea {
+	width: 100%;
+	padding: 0.95rem 1rem;
+	border-radius: 14px !important;
+	border: 1px solid var(--border) !important;
+	background: rgba(11, 11, 15, 0.92) !important;
+	color: var(--text) !important;
+	box-shadow: none !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+	color: var(--text-muted) !important;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+	outline: none !important;
+	border-color: var(--accent) !important;
+	box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.18) !important;
+}
+
+button,
+.p-button {
+	border: 0 !important;
+	border-radius: 999px !important;
+	background: linear-gradient(135deg, #2563eb, #3b82f6) !important;
+	color: white !important;
+	box-shadow: 0 12px 24px rgba(37, 99, 235, 0.24) !important;
+	transition: transform 0.22s ease, box-shadow 0.22s ease, filter 0.22s ease !important;
+}
+
+button:hover:not(:disabled),
+.p-button:hover:not(:disabled) {
+	transform: translateY(-1px);
+	filter: brightness(1.06);
+	box-shadow: 0 18px 34px rgba(37, 99, 235, 0.28) !important;
+}
+
+button[disabled],
+.p-button:disabled {
+	opacity: 0.6 !important;
+	cursor: not-allowed !important;
+	box-shadow: none !important;
+}
+
+.p-button-secondary,
+.p-button.p-button-secondary,
+button.secondary {
+	background: transparent !important;
+	color: var(--text) !important;
+	border: 1px solid var(--border) !important;
+	box-shadow: none !important;
+}
+
+.p-button-danger,
+.p-button.p-button-danger {
+	background: linear-gradient(135deg, #dc2626, #ef4444) !important;
+}
+
+.p-button-success,
+.p-button.p-button-success {
+	background: linear-gradient(135deg, #16a34a, #22c55e) !important;
+}
+
+.p-card {
+	border: 1px solid var(--border) !important;
+	border-radius: var(--radius-xl) !important;
+	overflow: hidden;
+}
+
+.p-card .p-card-content,
+.p-card .p-card-body,
+.p-card .p-card-footer {
+	background: transparent !important;
+	color: inherit !important;
+}
+
+.p-message,
+.p-message .p-message-wrapper {
+	border-radius: 14px !important;
+}
+
+.p-skeleton {
+	background: linear-gradient(90deg, rgba(42, 45, 52, 0.55), rgba(59, 130, 246, 0.25), rgba(42, 45, 52, 0.55)) !important;
+}
+
+.badge,
+.count-badge,
+.cart-count {
+	background: var(--accent) !important;
+	color: white !important;
+}
+
+@keyframes pageFadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(8px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
