@@ -1,4 +1,4 @@
-import { Injectable, computed, effect, inject, signal, PLATFORM_ID } from '@angular/core';
+import { Injectable, computed, effect, inject, signal, untracked, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { Product } from '../models';
 import { NotificationService } from '../../features/notifications/notification.service';
@@ -38,22 +38,29 @@ export class CartService {
         return;
       }
 
-      if (!isAuthenticated) {
-        localStorage.removeItem(this.cartStorageKey);
-        if (this.cartItems().length > 0) {
-          this.cartItems.set([]);
+      untracked(() => {
+        if (!isAuthenticated) {
+          localStorage.removeItem(this.cartStorageKey);
+          if (this.cartItems().length > 0) {
+            this.cartItems.set([]);
+          }
+          return;
         }
-        return;
-      }
 
-      if (this.cartItems().length === 0) {
-        this.cartItems.set(this.loadFromStorage());
-      }
+        if (this.cartItems().length === 0) {
+          const stored = this.loadFromStorage();
+          if (stored.length > 0) {
+            this.cartItems.set(stored);
+          }
+        }
+      });
     });
 
     effect(() => {
-      if (isPlatformBrowser(this.platformId) && this.authService.isAuthenticated()) {
-        localStorage.setItem(this.cartStorageKey, JSON.stringify(this.cartItems()));
+      const items = this.cartItems();
+
+      if (isPlatformBrowser(this.platformId) && untracked(() => this.authService.isAuthenticated())) {
+        localStorage.setItem(this.cartStorageKey, JSON.stringify(items));
       }
     });
   }
