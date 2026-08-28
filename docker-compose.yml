@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:15
+    container_name: kodiflow_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: kodiflow_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgrespassword
+    ports:
+      - "5432:5432"
+    volumes:
+      - kodiflow_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d kodiflow_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  kodiflow_postgres_data:
